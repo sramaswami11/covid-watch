@@ -25,6 +25,7 @@ class App extends Component {
       !this.state.selectedOption.value.Length)
       return (
         <div>
+          <center><h1>US Covid-19 Status</h1></center>
           <center><h1>Select an option</h1></center>
           <Select className="col-sm-5"
             onChange={this.handleChange}
