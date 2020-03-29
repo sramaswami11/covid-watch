@@ -31,9 +31,9 @@ class App extends Component {
             onChange={this.handleChange}
             options={options} />
 
-          {this.state.selectedOption && this.state.selectedOption.value == 'usCurrentAffected' &&
+          {this.state.selectedOption && this.state.selectedOption.value === 'usCurrentAffected' &&
             <UsCurrent />}
-           {this.state.selectedOption && this.state.selectedOption.value == 'statesDailyAffected' &&
+           {this.state.selectedOption && this.state.selectedOption.value === 'statesDailyAffected' &&
             <StatesCurrent />}
       </div>);
     }

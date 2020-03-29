@@ -1,16 +1,16 @@
 import React from 'react'
-import { Bar } from 'react-chartjs-2';
+//import { Bar } from 'react-chartjs-2';
 import Select from 'react-select';
 import * as consts from './constants';
 import StateCurrentFiltered from './stateCurrentFiltered';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
-import addDays from 'date-fns/addDays';
+//import addDays from 'date-fns/addDays';
 import './App.css';
 
 let states = consts.statesLin.map(e => ({ value: e, label: e }))
-let yesterday = addDays(new Date(), -1)
+//let today = new Date();
 
 
 class StatesCurrent extends React.Component {
@@ -22,7 +22,7 @@ class StatesCurrent extends React.Component {
         //let yesterdayFormatted = this.formatDate(this.state.startDate);
         this.state = {
             selectedOption: [],
-            startDate: yesterday,
+            startDate: new Date(),
             dateSelectedFormatted: null
         }
 
@@ -57,10 +57,12 @@ class StatesCurrent extends React.Component {
     render() {
         console.log('code=' + this.state.selectedOption.value);
         if (!this.state.dateSelected)
-            this.state.dateSelected = moment(this.state.startDate).format('YYYYMMDD');
+        //    this.state.dateSelected = moment(this.state.startDate).format('YYYYMMDD');
+            this.setState({ dateSelected :moment(this.state.startDate).format('YYYYMMDD')});
         console.log('date formatted=' + this.state.dateSelected);
         if (!this.state.dateSelectedFormatted)
-            this.state.dateSelectedFormatted = this.formatDate(this.state.dateSelected);
+           // this.state.dateSelectedFormatted = this.formatDate(this.state.dateSelected);
+            this.setState({dateSelectedFormatted: this.formatDate(this.state.dateSelected)});
         console.log(`render:formatted with / date selected:`, this.state.dateSelectedFormatted);
         // if (this.state.selectedOption === null || !this.state.selectedOption.value ||
         //     !this.state.selectedOption.value.Length)
@@ -84,7 +86,7 @@ class StatesCurrent extends React.Component {
                             onChange={this.handleDateChange}
                             name="selectedDate"
                             dateFormat="MM/dd/yyyy"
-                            maxDate={yesterday}
+                            maxDate={new Date()}
                         />
                     </div>
                 </div>
