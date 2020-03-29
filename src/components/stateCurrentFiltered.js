@@ -52,7 +52,7 @@ class StateCurrentFiltered extends React.Component {
     return (
       <div>
         <br/>
-        <center><h1>State Current Affected List</h1></center>
+        <center><h1>Current Affected List for {this.state.state_current.state} for {this.state.date_selected_formatted}</h1></center>
         <div className="card">
           <div className="card-body">
             <h5 className="card-text">Date:  {this.state.date_selected_formatted}</h5>
