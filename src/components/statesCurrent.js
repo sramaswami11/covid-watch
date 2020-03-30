@@ -1,25 +1,19 @@
 import React from 'react'
-//import { Bar } from 'react-chartjs-2';
 import Select from 'react-select';
 import * as consts from './constants';
 import StateCurrentFiltered from './stateCurrentFiltered';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
-//import addDays from 'date-fns/addDays';
 import './App.css';
 
 let states = consts.statesLin.map(e => ({ value: e, label: e }))
-//let today = new Date();
-
 
 class StatesCurrent extends React.Component {
 
 
     constructor(props) {
-        console.log("constructor called")
         super(props);
-        //let yesterdayFormatted = this.formatDate(this.state.startDate);
         this.state = {
             selectedOption: [],
             startDate: new Date(),
@@ -33,39 +27,30 @@ class StatesCurrent extends React.Component {
 
     handleChange = (selectedOption) => {
         this.setState({ selectedOption });
-        console.log(`Option selected:`, selectedOption);
+
     }
 
     formatDate(date) {
-        //let dateSelected = moment(startDate).format('YYYYMMDD');
         let dateSelectedFormatted = moment(date).format('MM/DD/YYYY');
         return dateSelectedFormatted;
     }
 
     handleDateChange(startDate) {
 
-        //let dateSelected = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' }).format(startDate);
         let dateSelected = moment(startDate).format('YYYYMMDD');
-        //let dateSelectedFormatted = moment(startDate).format('MM/DD/YYYY');
         let dateSelectedFormatted = this.formatDate(startDate);
         this.setState({ startDate, dateSelected, dateSelectedFormatted });
-        console.log(`formatted date selected:`, dateSelected);
 
-        console.log(`formatted  with / date selected:`, dateSelectedFormatted);
     }
 
     render() {
-        console.log('code=' + this.state.selectedOption.value);
         if (!this.state.dateSelected)
-        //    this.state.dateSelected = moment(this.state.startDate).format('YYYYMMDD');
-            this.setState({ dateSelected :moment(this.state.startDate).format('YYYYMMDD')});
-        console.log('date formatted=' + this.state.dateSelected);
+            this.setState({ dateSelected: moment(this.state.startDate).format('YYYYMMDD') });
+
         if (!this.state.dateSelectedFormatted)
-           // this.state.dateSelectedFormatted = this.formatDate(this.state.dateSelected);
-            this.setState({dateSelectedFormatted: this.formatDate(this.state.dateSelected)});
-        console.log(`render:formatted with / date selected:`, this.state.dateSelectedFormatted);
-        // if (this.state.selectedOption === null || !this.state.selectedOption.value ||
-        //     !this.state.selectedOption.value.Length)
+            this.setState({ dateSelectedFormatted: this.formatDate(this.state.dateSelected) });
+
+
         return (
             <div>
                 <br />
@@ -91,7 +76,6 @@ class StatesCurrent extends React.Component {
                     </div>
                 </div>
                 {this.state.selectedOption && this.state.selectedOption.value &&
-                    //this.state.dateSelectedFormatted &&
                     <StateCurrentFiltered key={this.state.selectedOption.value + "," + this.state.dateSelectedFormatted}
                         stateCode={this.state.selectedOption.value}
                         dateSelected={this.state.dateSelected}

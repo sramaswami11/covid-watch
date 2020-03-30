@@ -1,6 +1,5 @@
 import React from 'react'
 import { Bar } from 'react-chartjs-2';
-//import moment from 'moment';
 
 class StateCurrentFiltered extends React.Component {
   constructor(props) {
@@ -22,38 +21,32 @@ class StateCurrentFiltered extends React.Component {
       .then(res => res.json())
       .then((data) => {
         this.setState({ state_current: data })
-        //console.log(this.state.state_current)
       })
       .catch(console.log)
   }
 
   render() {
-    console.log("rendering original array");
-    console.log(Object.values(this.state.state_current));
-    console.log("rendering  array after splice");
-    console.log(Object.values(this.state.state_current).splice(2,6));
 
     let myData = {
-      labels: ['Positive', 'Negative', 'Pending','Hospitalized',
-         'Death', 'Total'],
+      labels: ['Positive', 'Negative', 'Pending', 'Hospitalized',
+        'Death', 'Total'],
       datasets: [
         {
           label: '# of people',
           backgroundColor: 'rgba(75,192,192,1)',
           borderColor: 'rgba(0,0,0,1)',
           borderWidth: 2,
-          data: Object.values(this.state.state_current).splice(2,6)
+          data: Object.values(this.state.state_current).splice(2, 6)
         }
       ]
     };
     console.log(this.state.state_current);
-    if (!this.state.state_current ||  this.state.state_current.error == true) {
-      console.error("didn't find it", !this.state.state_current);
+    if (!this.state.state_current || this.state.state_current.error === true) {
       return "No data is available. Please change the search criteria and try again";
     }
     return (
       <div>
-        <br/>
+        <br />
         <center><h1>Current Affected List for {this.state.state_current.state} for {this.state.date_selected_formatted}</h1></center>
         <div className="card">
           <div className="card-body">
@@ -67,19 +60,19 @@ class StateCurrentFiltered extends React.Component {
           </div>
         </div>
         <Bar
-               data={myData}
-               options={{
-                 title:{
-                   display:true,
-                   text:'Covid-19  status for '+this.state.state_current.state+ ' for '+this.state.date_selected_formatted,
-                   fontSize:20
-                 },
-                 legend:{
-                   display:true,
-                   position:'right'
-                 }
-               }}
-             />
+          data={myData}
+          options={{
+            title: {
+              display: true,
+              text: 'Covid-19  status for ' + this.state.state_current.state + ' for ' + this.state.date_selected_formatted,
+              fontSize: 20
+            },
+            legend: {
+              display: true,
+              position: 'right'
+            }
+          }}
+        />
       </div>)
   }
 

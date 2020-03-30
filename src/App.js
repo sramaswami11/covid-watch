@@ -9,6 +9,11 @@ const options = [
 
 ];
 
+const disclaimer = 'The information presented on this website is for general informational purposes only. \
+The data is being pulled using third party Application Programming Interfaces (APIs) and hence all the \
+information on this site is provided in good faith, so we make no representation on warranty, adequecy, \
+validity, reliability or completeness of any information on this site.';
+
 class App extends Component {
 
   state = {
@@ -40,6 +45,9 @@ class App extends Component {
             <UsCurrent />}
            {this.state.selectedOption && this.state.selectedOption.value === 'statesDailyAffected' &&
             <StatesCurrent />}
+            <br/>
+            <h7>{disclaimer} </h7>
+            
       </div>);
     }
 
