@@ -54,7 +54,8 @@ class StateCurrentFiltered extends React.Component {
             <h5 className="card-text">State:  {this.state.state_current.state}</h5>
             <h5 className="card-text">Positive:  {this.state.state_current.positive}</h5>
             <h5 className="card-text">Negative:  {this.state.state_current.negative}</h5>
-            <h5 className="card-text">Pending:  {this.state.state_current.pending}</h5>
+            {this.state.state_current.pending != null &&
+            <h5 className="card-text">Pending:  {this.state.state_current.pending}</h5>}
             <h5 className="card-text">Deaths:  {this.state.state_current.death}</h5>
             <h5 className="card-text">Total:  {this.state.state_current.total}</h5>
           </div>
@@ -64,7 +65,7 @@ class StateCurrentFiltered extends React.Component {
           options={{
             title: {
               display: true,
-              text: 'Covid-19  status for ' + this.state.state_current.state + ' for ' + this.state.date_selected_formatted,
+              text: 'Covid-19  status for ' + this.state.state_current.state + ' as of  ' + this.state.date_selected_formatted,
               fontSize: 20
             },
             legend: {
