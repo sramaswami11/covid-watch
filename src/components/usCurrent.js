@@ -21,8 +21,7 @@ class UsCurrent extends React.Component {
   }
 
   render() {
-    // console.log( Object.values(this.props.us_current[0]));
-    if (!this.state.us_current || !this.state.us_current.length) {
+     if (!this.state.us_current || !this.state.us_current.length) {
       return "Loading...";
     }
     let myData = {
