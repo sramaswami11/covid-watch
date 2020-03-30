@@ -22,7 +22,7 @@ class StateCurrentFiltered extends React.Component {
       .then(res => res.json())
       .then((data) => {
         this.setState({ state_current: data })
-        console.log(this.state.state_current)
+        //console.log(this.state.state_current)
       })
       .catch(console.log)
   }
@@ -46,9 +46,11 @@ class StateCurrentFiltered extends React.Component {
         }
       ]
     };
-    /*if (!this.state.state_current || !this.state.state_current.length) {
-      return "Loading...";
-    }*/
+    console.log(this.state.state_current);
+    if (!this.state.state_current ||  this.state.state_current.error == true) {
+      console.error("didn't find it", !this.state.state_current);
+      return "No data is available. Please change the search criteria and try again";
+    }
     return (
       <div>
         <br/>

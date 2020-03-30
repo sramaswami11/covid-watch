@@ -24,7 +24,12 @@ class App extends Component {
     if (this.state.selectedOption === null || !this.state.selectedOption.value ||
       !this.state.selectedOption.value.Length)
       return (
-        <div>
+        <div className="container"
+        style={{
+          backgroundColor: 'lightblue'
+          
+        }}
+        >
           <center><h1>US Covid-19 Status</h1></center>
           <center><h1>Select an option</h1></center>
           <Select className="col-sm-5"
